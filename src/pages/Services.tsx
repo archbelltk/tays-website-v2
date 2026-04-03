@@ -1,11 +1,8 @@
 import { Link } from 'react-router-dom'
 import {
   Settings,
-  CheckCircle,
-  ArrowRight,
+  Circle,
   Activity,
-  ChevronRight,
-  ListChecks,
   GraduationCap,
   Users,
   BookOpen,
@@ -15,9 +12,12 @@ import {
   Shield,
   Utensils,
   Zap,
-  Mail,
-  Briefcase,
 } from 'lucide-react'
+
+import featureProject1 from '../img/featured-project-7.jpg'
+import featureProject2 from '../img/featured-project-8.jpg'
+import featureProject3 from '../img/featured-project-10.jpg'
+
 
 export default function Services() {
   return (
@@ -77,7 +77,7 @@ export default function Services() {
                 ].map(({ title, desc }) => (
                   <div key={title} className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="w-6 h-6 text-primary" />
+                      <Circle className="w-4 h-4 text-primary" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-white mb-1">{title}</h4>
@@ -89,9 +89,10 @@ export default function Services() {
 
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-sky-600 text-white font-semibold rounded-lg transition-all duration-300"
+                className="inline-flex items-center mt-5 gap-2 px-8 py-4 bg-primary hover:bg-sky-600 text-white font-semibold rounded-lg transition-all duration-300"
               >
-                Discuss Your Project <ArrowRight className="w-4 h-4" />
+                Discuss Your Project 
+                {/* <ArrowRight className="w-4 h-4" /> */}
               </Link>
             </div>
 
@@ -99,7 +100,7 @@ export default function Services() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-3xl" />
               <div className="relative bg-slate-900 border border-slate-800 rounded-3xl p-8">
                 <img
-                  src="https://images.unsplash.com/photo-1565514020176-db8ab644cf14?w=800&q=80"
+                  src={featureProject1}
                   alt="Control Systems"
                   className="w-full h-64 object-cover rounded-2xl mb-6"
                 />
@@ -130,7 +131,7 @@ export default function Services() {
               <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-purple-500/20 rounded-3xl blur-3xl" />
               <div className="relative bg-slate-900 border border-slate-800 rounded-3xl p-8">
                 <img
-                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80"
+                  src={featureProject2}
                   alt="SCADA Systems"
                   className="w-full h-64 object-cover rounded-2xl mb-6"
                 />
@@ -164,7 +165,7 @@ export default function Services() {
 
               <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 mb-8">
                 <h4 className="font-semibold text-white mb-4 flex items-center gap-2">
-                  <ListChecks className="w-5 h-5 text-accent" />
+                  {/* <ListChecks className="w-5 h-5 text-accent" /> */}
                   Our Capabilities Include:
                 </h4>
                 <ul className="space-y-3 text-slate-400">
@@ -180,7 +181,7 @@ export default function Services() {
                     'Ongoing support & maintenance',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <ChevronRight className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                      <Circle className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -189,9 +190,10 @@ export default function Services() {
 
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-cyan-600 text-white font-semibold rounded-lg transition-all duration-300"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-accent hover:bg-cyan-600 text-white font-semibold rounded-lg transition-all duration-300"
               >
-                Get SCADA Consultation <ArrowRight className="w-4 h-4" />
+                Get SCADA Consultation
+                 {/* <ArrowRight className="w-4 h-4" /> */}
               </Link>
             </div>
           </div>
@@ -231,9 +233,11 @@ export default function Services() {
 
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-purple-500 hover:bg-purple-600 text-white font-semibold rounded-lg transition-all duration-300"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-purple-500 hover:bg-purple-600 text-white font-semibold rounded-lg transition-all duration-300"
               >
-                Apply for Mentorship <ArrowRight className="w-4 h-4" />
+                Apply for Mentorship 
+                
+                {/* <ArrowRight className="w-4 h-4" /> */}
               </Link>
             </div>
 
@@ -241,7 +245,7 @@ export default function Services() {
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-3xl blur-3xl" />
               <div className="relative bg-slate-900 border border-slate-800 rounded-3xl p-8">
                 <img
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+                  src={featureProject3}
                   alt="Mentorship"
                   className="w-full h-64 object-cover rounded-2xl mb-6"
                 />
@@ -313,13 +317,15 @@ export default function Services() {
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-sky-600 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg shadow-primary/25"
             >
-              Contact Us <Mail className="w-5 h-5" />
+              Contact Us 
+              {/* <Mail className="w-5 h-5" /> */}
             </Link>
             <Link
               to="/projects"
               className="inline-flex items-center gap-2 px-8 py-4 border border-slate-700 hover:border-primary text-slate-300 hover:text-white font-semibold rounded-lg transition-all duration-300"
             >
-              View Our Work <Briefcase className="w-5 h-5" />
+              View Our Work 
+              {/* <Briefcase className="w-5 h-5" /> */}
             </Link>
           </div>
         </div>

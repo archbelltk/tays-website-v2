@@ -1,5 +1,13 @@
 import { Link } from 'react-router-dom'
-import { CheckCircle, Calendar, MapPin, Clock, ArrowRight } from 'lucide-react'
+import { Circle, Calendar, MapPin, Clock } from 'lucide-react'
+import rockwellLogo from '../img/rockwell-automation.png'
+import siemensLogo from '../img/siemens.png'
+import mitsubhishiLogo from '../img/Mitsubishi.png'
+import schindlerLogo from '../img/schneider-electric.png'
+import featureProject4 from '../img/featured-project-12.jpg'
+import featureProject5 from '../img/featured-project-13.jpg'
+import featureProject6 from '../img/featured-project-14.jpg'
+
 
 export default function Projects() {
   return (
@@ -25,7 +33,7 @@ export default function Projects() {
           <p className="text-center text-slate-500 mb-8 text-sm uppercase tracking-wider">
             Technologies We Harness
           </p>
-          <div className="flex flex-wrap justify-center gap-12 items-center opacity-70">
+          {/* <div className="flex flex-wrap justify-center gap-12 items-center opacity-70">
             {[
               { name: 'Rockwell Automation', hover: 'hover:text-orange-500' },
               { name: 'Siemens', hover: 'hover:text-cyan-500' },
@@ -39,7 +47,22 @@ export default function Projects() {
                 {name}
               </div>
             ))}
-          </div>
+          </div> */}
+           <div className="flex flex-wrap justify-center mt-8 gap-10 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+              {[
+                { brand: 'Rockwell', src: rockwellLogo },
+                { brand: 'Siemens', src: siemensLogo },
+                { brand: 'Mitsubishi', src: mitsubhishiLogo },
+                { brand: 'Schneider', src: schindlerLogo },
+              ].map(({ brand, src }) => (
+                <img
+                  key={brand}
+                  src={src}
+                  alt={brand}
+                  className="w-[190px] object-contain"
+                />
+              ))}
+            </div>
         </div>
       </section>
 
@@ -55,7 +78,7 @@ export default function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-3xl group-hover:blur-2xl transition-all" />
                 <div className="relative bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1565514020176-db8ab644cf14?w=800&q=80"
+                    src={featureProject4}
                     alt="Control Automation Project"
                     className="w-full h-80 object-cover"
                   />
@@ -102,7 +125,7 @@ export default function Projects() {
                     'Operator training and documentation',
                   ].map((item) => (
                     <div key={item} className="flex items-center gap-3 text-slate-300">
-                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                      <Circle className="w-5 h-5 text-primary flex-shrink-0" />
                       <span>{item}</span>
                     </div>
                   ))}
@@ -116,9 +139,11 @@ export default function Projects() {
 
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-sky-600 text-white font-semibold rounded-lg transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-sky-600 text-white font-semibold rounded-lg transition-all duration-300"
                 >
-                  Similar Project? Contact Us <ArrowRight className="w-4 h-4" />
+                  Similar Project? Contact Us 
+                  
+                  {/* <ArrowRight className="w-4 h-4" /> */}
                 </Link>
               </div>
             </div>
@@ -160,7 +185,7 @@ export default function Projects() {
                     'Safety integrated functionality',
                   ].map((item) => (
                     <div key={item} className="flex items-center gap-3 text-slate-300">
-                      <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
+                      <Circle className="w-5 h-5 text-accent flex-shrink-0" />
                       <span>{item}</span>
                     </div>
                   ))}
@@ -174,9 +199,10 @@ export default function Projects() {
 
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-cyan-600 text-white font-semibold rounded-lg transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-accent hover:bg-cyan-600 text-white font-semibold rounded-lg transition-all duration-300"
                 >
-                  Discuss Motion Control <ArrowRight className="w-4 h-4" />
+                  Discuss Motion Control 
+                  {/* <ArrowRight className="w-4 h-4" /> */}
                 </Link>
               </div>
 
@@ -184,7 +210,7 @@ export default function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-purple-500/20 rounded-3xl blur-3xl group-hover:blur-2xl transition-all" />
                 <div className="relative bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&q=80"
+                    src={featureProject5}
                     alt="Motion Control Project"
                     className="w-full h-80 object-cover"
                   />
@@ -207,7 +233,7 @@ export default function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-accent/20 rounded-3xl blur-3xl group-hover:blur-2xl transition-all" />
                 <div className="relative bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
+                    src={featureProject6}
                     alt="SCADA Project"
                     className="w-full h-80 object-cover"
                   />
@@ -254,7 +280,7 @@ export default function Projects() {
                     'Historical data logging and trending',
                   ].map((item) => (
                     <div key={item} className="flex items-center gap-3 text-slate-300">
-                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                      <Circle className="w-5 h-5 text-green-400 flex-shrink-0" />
                       <span>{item}</span>
                     </div>
                   ))}
@@ -268,9 +294,10 @@ export default function Projects() {
 
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-all duration-300"
                 >
-                  Start Your SCADA Project <ArrowRight className="w-4 h-4" />
+                  Start Your SCADA Project 
+                  {/* <ArrowRight className="w-4 h-4" /> */}
                 </Link>
               </div>
             </div>
@@ -310,7 +337,8 @@ export default function Projects() {
             to="/contact"
             className="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-sky-600 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg shadow-primary/25"
           >
-            Start Your Project <ArrowRight className="w-5 h-5" />
+            Start Your Project 
+            {/* <ArrowRight className="w-5 h-5" /> */}
           </Link>
         </div>
       </section>

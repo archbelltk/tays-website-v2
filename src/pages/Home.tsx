@@ -1,26 +1,22 @@
 import { Link } from 'react-router-dom'
 import {
   ArrowRight,
-  Mail,
   ChevronDown,
   Bot,
   Activity,
   Cpu,
   Settings,
   Users,
-  Pill,
-  Shield,
-  Utensils,
-  Zap,
-  Factory,
-  Globe,
-  Award,
-  Headphones,
-  RotateCw,
   Calendar,
   MapPin,
-  Check,
 } from 'lucide-react'
+import featureProject1 from '../img/featured-project-4.jpg'
+import featureProject2 from '../img/featured-project-5.jpg'
+import rockwellLogo from '../img/rockwell-automation.png'
+import siemensLogo from '../img/siemens.png'
+import mitsubhishiLogo from '../img/Mitsubishi.png'
+import schindlerLogo from '../img/schneider-electric.png'
+import industriesImg from '../img/industries.jpg'
 
 export default function Home() {
   return (
@@ -31,7 +27,7 @@ export default function Home() {
           <img
             src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920&q=80"
             alt="Industrial Automation Background"
-            className="w-full h-full object-cover opacity-40"
+            className="w-full h-full object-cover opacity-85"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-slate-950/50" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/80" />
@@ -43,27 +39,24 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
             {/* Text Content */}
             <div className="text-center lg:text-left">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-900/80 border border-primary/30 text-primary mb-8 animate-pulse-slow backdrop-blur-sm">
+              {/* <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-900/80 border border-primary/30 text-primary mb-8 animate-pulse-slow backdrop-blur-sm">
                 <span className="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse" />
                 <span className="text-sm font-medium">Engineering Excellence Since 2010</span>
-              </div>
+              </div> */}
 
-              <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight">
-                <span className="block text-white">Bespoke</span>
+              <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-6xl mb-6 leading-tight">
+                <span className="inline text-white">Bespoke </span>
                 <span className="gradient-text">Automation</span>
                 <span className="block text-white">Solutions</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto lg:mx-0 mb-8 font-light">
-                Automation Solutions for a Smarter Future
+              <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto lg:mx-0 mb-8 font-[500]">
+               For a Smarter Future
               </p>
 
-              <p className="text-slate-400 max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed text-lg">
-                Tays Engineering Ltd, trading as Tays Automation, is a reputable automation
-                engineering company headquartered in the United Kingdom. With over a decade of
-                experience, we provide comprehensive EPC-based solutions within the automation
-                industry.
-              </p>
+              {/* <p className="text-slate-300 max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed text-lg">
+               TAYS Automation, a UK-based automation engineering company delivering comprehensive EPC solutions across the automation industry for over a decade.
+              </p> */}
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link
@@ -71,14 +64,14 @@ export default function Home() {
                   className="px-8 py-4 bg-primary hover:bg-sky-600 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg shadow-primary/25"
                 >
                   Explore Services
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  {/* <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" /> */}
                 </Link>
                 <Link
                   to="/contact"
                   className="px-8 py-4 border border-slate-600 hover:border-primary bg-slate-900/50 backdrop-blur-sm text-slate-300 hover:text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
                 >
                   Get in Touch
-                  <Mail className="w-5 h-5" />
+                  {/* <Mail className="w-5 h-5" /> */}
                 </Link>
               </div>
 
@@ -164,7 +157,7 @@ export default function Home() {
         </div>
 
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
-          <ChevronDown className="w-6 h-6 text-slate-400" />
+          <a href="#services"><ChevronDown className="w-6 h-6 text-slate-400" /></a>
         </div>
       </section>
 
@@ -185,9 +178,7 @@ export default function Home() {
               </div>
               <h3 className="font-display text-2xl font-bold mb-4 text-white">Automation & Control Systems</h3>
               <p className="text-slate-400 mb-6 leading-relaxed">
-                We combine our expertise, industry knowledge, and advanced technology to provide
-                comprehensive automation and control systems services tailored to your operational
-                needs.
+                We deliver end-to-end automation and control systems using advanced technology and deep industry expertise.
               </p>
               <Link
                 to="/services#automation"
@@ -207,11 +198,11 @@ export default function Home() {
                 We design, engineer, and commission Real Time Systems (RTS) and SCADA solutions for
                 substation environments with deterministic, time-critical behavior.
               </p>
-              <ul className="text-slate-500 text-sm mb-6 space-y-1">
+              {/* <ul className="text-slate-500 text-sm mb-6 space-y-1">
                 <li className="flex items-center gap-2"><Check className="w-3 h-3 text-primary" /> IEC 61850 & DNP3 Protocols</li>
                 <li className="flex items-center gap-2"><Check className="w-3 h-3 text-primary" /> HMI Development</li>
                 <li className="flex items-center gap-2"><Check className="w-3 h-3 text-primary" /> Legacy System Migrations</li>
-              </ul>
+              </ul> */}
               <Link
                 to="/services#scada"
                 className="text-accent font-semibold flex items-center gap-2 group-hover:gap-3 transition-all"
@@ -250,13 +241,22 @@ export default function Home() {
               <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 text-white">
                 Industries We Support
               </h2>
-              <p className="text-lg text-slate-400 mb-8 leading-relaxed">
-                Discover how our unwavering support and expertise uplifts industries across the
-                spectrum. From pharmaceutical advancements that enhance lives to cutting-edge
+              <div className="text-lg text-slate-400 mb-8 leading-relaxed">
+                {/* <p className='text-slate-300'>
+                  Discover how our unwavering support and expertise uplifts industries across the
+                spectrum. 
+                </p> */}
+                <p className="mt-4">
+                     Discover how our unwavering support and expertise uplifts industries across the
+                spectrum. 
+                </p>
+                <p className='mt-3'>
+From pharmaceutical advancements that enhance lives to cutting-edge
                 security solutions that safeguard businesses, and innovative food initiatives that
                 satisfy diverse palates.
-              </p>
-              <div className="grid grid-cols-2 gap-4 mb-8">
+                </p>
+              </div>
+              {/* <div className="grid grid-cols-2 gap-4 mb-8">
                 {[
                   { icon: <Pill className="w-5 h-5 text-primary" />, label: 'Pharmaceutical' },
                   { icon: <Shield className="w-5 h-5 text-primary" />, label: 'Security' },
@@ -268,33 +268,23 @@ export default function Home() {
                     <span>{label}</span>
                   </div>
                 ))}
-              </div>
+              </div> */}
               <Link
                 to="/services"
                 className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-lg transition-all duration-300 flex items-center gap-2 border border-slate-700 w-fit"
               >
-                Explore Industries <ArrowRight className="w-4 h-4" />
+                Explore Industries 
+                {/* <ArrowRight className="w-4 h-4" /> */}
               </Link>
             </div>
 
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur-3xl" />
-              <div className="relative bg-slate-900 border border-slate-800 rounded-3xl p-8 glow">
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { icon: <Factory className="w-10 h-10 text-primary mx-auto mb-3" />, value: '150+', label: 'Projects Completed' },
-                    { icon: <Globe className="w-10 h-10 text-accent mx-auto mb-3" />, value: '10+', label: 'Years Experience' },
-                    { icon: <Award className="w-10 h-10 text-purple-400 mx-auto mb-3" />, value: 'EPC', label: 'Based Solutions' },
-                    { icon: <Headphones className="w-10 h-10 text-green-400 mx-auto mb-3" />, value: '24/7', label: 'Support Available' },
-                  ].map(({ icon, value, label }) => (
-                    <div key={label} className="bg-slate-950 p-6 rounded-2xl border border-slate-800 text-center">
-                      {icon}
-                      <div className="text-2xl font-bold text-white mb-1">{value}</div>
-                      <div className="text-sm text-slate-500">{label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <img
+                src={industriesImg}
+                alt="Industries we support"
+                className="relative w-full h-[500px] object-cover rounded-3xl shadow-2xl opacity-40"
+              />
             </div>
           </div>
         </div>
@@ -310,20 +300,29 @@ export default function Home() {
             <p className="text-lg text-slate-400 mb-8">
               Harnessing the Power of Rockwell Automation, Siemens, Mitsubishi, and Schneider Electric
             </p>
-            <div className="flex flex-wrap justify-center gap-8 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-              {['Rockwell', 'Siemens', 'Mitsubishi', 'Schneider'].map((brand) => (
-                <div key={brand} className="text-xl font-bold text-slate-400">
-                  {brand}
-                </div>
+            <div className="flex flex-wrap justify-center mt-8 gap-10 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+              {[
+                { brand: 'Rockwell', src: rockwellLogo },
+                { brand: 'Siemens', src: siemensLogo },
+                { brand: 'Mitsubishi', src: mitsubhishiLogo },
+                { brand: 'Schneider', src: schindlerLogo },
+              ].map(({ brand, src }) => (
+                <img
+                  key={brand}
+                  src={src}
+                  alt={brand}
+                  className="w-[200px] object-contain"
+                />
               ))}
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-8 mb-12 mt-[60px]">
             <div className="group relative overflow-hidden rounded-2xl bg-slate-950 border border-slate-800 card-hover">
               <div className="h-64 bg-gradient-to-br from-slate-800 to-slate-900 relative overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <Cpu className="w-24 h-24 text-slate-800 group-hover:text-primary/20 transition-all duration-500 group-hover:scale-110" />
+                  {/* <Cpu className="w-24 h-24 text-slate-800 group-hover:text-primary/20 transition-all duration-500 group-hover:scale-110" /> */}
+                  <img src={featureProject1} alt="feature project" className="w-full h-full object-cover object-center" />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent" />
               </div>
@@ -339,7 +338,7 @@ export default function Home() {
                   Advanced PLC programming and control system integration for industrial manufacturing processes.
                 </p>
                 <div className="flex items-center gap-4 text-sm text-slate-500">
-                  <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> 2024</span>
+                  <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> 2025</span>
                   <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> UK</span>
                 </div>
               </div>
@@ -348,7 +347,8 @@ export default function Home() {
             <div className="group relative overflow-hidden rounded-2xl bg-slate-950 border border-slate-800 card-hover">
               <div className="h-64 bg-gradient-to-br from-slate-800 to-slate-900 relative overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <RotateCw className="w-24 h-24 text-slate-800 group-hover:text-accent/20 transition-all duration-500 group-hover:scale-110" />
+                  {/* <RotateCw className="w-24 h-24 text-slate-800 group-hover:text-accent/20 transition-all duration-500 group-hover:scale-110" /> */}
+                  <img src={featureProject2} alt="feature project" className="w-full h-full object-cover object-center" />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent" />
               </div>
@@ -364,7 +364,7 @@ export default function Home() {
                   Precision motion control system development and implementation for automated manufacturing lines.
                 </p>
                 <div className="flex items-center gap-4 text-sm text-slate-500">
-                  <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> 2024</span>
+                  <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> 2025</span>
                   <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> UK</span>
                 </div>
               </div>
@@ -376,7 +376,8 @@ export default function Home() {
               to="/projects"
               className="inline-flex items-center gap-2 px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-lg transition-all duration-300 border border-slate-700"
             >
-              View All Projects <ArrowRight className="w-5 h-5" />
+              View All Projects 
+              {/* <ArrowRight className="w-5 h-5" /> */}
             </Link>
           </div>
         </div>
@@ -397,7 +398,8 @@ export default function Home() {
             to="/contact"
             className="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-sky-600 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg shadow-primary/25"
           >
-            Get in Touch <Mail className="w-5 h-5" />
+            Get in Touch 
+            {/* <Mail className="w-5 h-5" /> */}
           </Link>
         </div>
       </section>

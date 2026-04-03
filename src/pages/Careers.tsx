@@ -2,21 +2,11 @@ import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Users,
-  TrendingUp,
-  Brain,
-  GraduationCap,
-  Heart,
-  PoundSterling,
-  Calendar,
-  BookOpen,
-  ShieldCheck,
-  Car,
   ChevronDown,
   Check,
   ChevronRight,
   ArrowRight,
   UploadCloud,
-  Send,
   User,
   Star,
   Search,
@@ -192,7 +182,7 @@ export default function Careers() {
       </section>
 
       {/* Why Join Us */}
-      <section className="py-24 bg-slate-950 relative">
+      {/* <section className="py-24 bg-slate-950 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-display text-4xl font-bold mb-4 text-white">
@@ -218,10 +208,10 @@ export default function Careers() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Benefits Section */}
-      <section className="py-24 bg-slate-900 relative overflow-hidden">
+      {/* <section className="py-24 bg-slate-900 relative overflow-hidden">
         <div className="absolute inset-0 circuit-pattern opacity-20" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -275,7 +265,7 @@ export default function Careers() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Open Positions */}
       <section className="py-24 bg-slate-950 relative" id="openings">
@@ -470,7 +460,8 @@ export default function Careers() {
               </div>
 
               <button type="submit" className="w-full py-4 bg-primary hover:bg-sky-600 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-primary/25">
-                Submit Application <Send className="w-5 h-5" />
+                Submit Application 
+                {/* <Send className="w-5 h-5" /> */}
               </button>
             </form>
           </div>

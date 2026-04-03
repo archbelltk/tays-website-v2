@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { MapPin, Mail, Clock, Phone, Send, HelpCircle } from 'lucide-react'
-import { SiX, SiYoutube } from '@icons-pack/react-simple-icons'
+import { Mail, Phone, HelpCircle } from 'lucide-react'
+import { SiWhatsapp, SiX, SiYoutube } from '@icons-pack/react-simple-icons'
 
 const LinkedInIcon = () => (
   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -54,26 +54,32 @@ export default function Contact() {
 
               <div className="space-y-6">
                 {[
-                  {
-                    icon: <MapPin className="w-6 h-6 text-primary" />,
-                    title: 'Location',
-                    lines: ['United Kingdom', 'Headquarters'],
-                  },
+                  // {
+                  //   icon: <MapPin className="w-6 h-6 text-primary" />,
+                  //   title: 'Location',
+                  //   lines: ['United Kingdom', 'Headquarters'],
+                  // },
                   {
                     icon: <Mail className="w-6 h-6 text-primary" />,
                     title: 'Email',
-                    lines: ['info@taysautomation.co.uk', 'sales@taysautomation.co.uk'],
+                    lines: ['admin@taysautomation.com'],
                   },
-                  {
-                    icon: <Clock className="w-6 h-6 text-primary" />,
-                    title: 'Working Hours',
-                    lines: ['Monday - Friday', '9:00 AM - 5:00 PM GMT'],
-                  },
+                  // {
+                  //   icon: <Clock className="w-6 h-6 text-primary" />,
+                  //   title: 'Working Hours',
+                  //   lines: ['Monday - Friday', '9:00 AM - 5:00 PM GMT'],
+                  // },
                   {
                     icon: <Phone className="w-6 h-6 text-primary" />,
                     title: 'Phone',
-                    lines: ['+44 (0) 1234 567890', '24/7 Emergency Support'],
+                    lines: ['+44 330 133 5282'],
                   },
+
+                     {
+                    icon: <SiWhatsapp className="w-6 h-6 text-primary" />,
+                    title: 'Phone',
+                    lines: ['+44 7594 057017'],
+                  }
                 ].map(({ icon, title, lines }) => (
                   <div key={title} className="flex items-start gap-4 p-4 bg-slate-900 rounded-xl border border-slate-800">
                     <div className="w-12 h-12 bg-slate-950 rounded-lg flex items-center justify-center border border-slate-800 flex-shrink-0">
@@ -222,7 +228,8 @@ export default function Contact() {
                     type="submit"
                     className="w-full py-4 bg-primary hover:bg-sky-600 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-primary/25"
                   >
-                    Send Message <Send className="w-5 h-5" />
+                    Send Message 
+                    {/* <Send className="w-5 h-5" /> */}
                   </button>
                 </form>
               </div>
@@ -232,7 +239,7 @@ export default function Contact() {
       </section>
 
       {/* Map Placeholder */}
-      <section className="py-24 bg-slate-900 relative overflow-hidden">
+      {/* <section className="py-24 bg-slate-900 relative overflow-hidden">
         <div className="absolute inset-0 circuit-pattern opacity-20" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="bg-slate-950 border border-slate-800 rounded-3xl p-2">
@@ -255,10 +262,10 @@ export default function Contact() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* FAQ Section */}
-      <section className="py-24 bg-slate-950">
+      <section className="py-24 bg-[#0e172a]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl font-bold mb-4 text-white">

@@ -49,7 +49,7 @@ export default function Footer() {
               <li><Link to="/services#automation" className="hover:text-primary transition-colors">Control Systems</Link></li>
               <li><Link to="/services#scada" className="hover:text-primary transition-colors">SCADA Solutions</Link></li>
               <li><Link to="/services#mentorship" className="hover:text-primary transition-colors">Mentorship</Link></li>
-              <li><Link to="/services" className="hover:text-primary transition-colors">Consulting</Link></li>
+              <li><Link to="/services" onClick={() => window.scrollTo({ top: 0 })} className="hover:text-primary transition-colors">Consulting</Link></li>
             </ul>
           </div>
 

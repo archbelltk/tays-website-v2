@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import {
   Settings,
   Circle,
@@ -20,6 +21,14 @@ import featureProject3 from '../img/featured-project-10.jpg'
 
 
 export default function Services() {
+  const { hash } = useLocation()
+
+  useEffect(() => {
+    if (!hash) return
+    const el = document.querySelector(hash)
+    if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100)
+  }, [hash])
+
   return (
     <>
       {/* Page Header */}

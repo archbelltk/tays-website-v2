@@ -76,11 +76,11 @@ export default function Projects() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-3xl group-hover:blur-2xl transition-all" />
-                <div className="relative bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden">
+                <div className="relative bg-slate-900 border border-slate-800 rounded-[12px] overflow-hidden">
                   <img
                     src={featureProject4}
                     alt="Control Automation Project"
-                    className="w-full h-80 object-cover"
+                    className="w-full h-80 sm:h-[400px] object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6">
@@ -208,11 +208,11 @@ export default function Projects() {
 
               <div className="relative group order-1 lg:order-2">
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-purple-500/20 rounded-3xl blur-3xl group-hover:blur-2xl transition-all" />
-                <div className="relative bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden">
+                <div className="relative bg-slate-900 border border-slate-800 rounded-[12px] overflow-hidden">
                   <img
                     src={featureProject5}
                     alt="Motion Control Project"
-                    className="w-full h-80 object-cover"
+                    className="w-full h-80 sm:h-[400px] object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6">
@@ -231,11 +231,11 @@ export default function Projects() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-accent/20 rounded-3xl blur-3xl group-hover:blur-2xl transition-all" />
-                <div className="relative bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden">
+                <div className="relative bg-slate-900 border border-slate-800 rounded-[12px] overflow-hidden">
                   <img
                     src={featureProject6}
                     alt="SCADA Project"
-                    className="w-full h-80 object-cover"
+                    className="w-full h-80 sm:h-[400px] object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6">

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Mail, Phone, HelpCircle } from 'lucide-react'
 import { SiWhatsapp, SiX, SiYoutube } from '@icons-pack/react-simple-icons'
+import emailjs from '@emailjs/browser'
 
 const LinkedInIcon = () => (
   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -12,11 +13,44 @@ const LinkedInIcon = () => (
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [form, setForm] = useState({
+    firstName: '', lastName: '', email: '', phone: '',
+    company: '', service: '', message: '',
+  })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 5000)
+    setSending(true)
+    setError(false)
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID,
+        {
+          from_name: `${form.firstName} ${form.lastName}`,
+          from_email: form.email,
+          phone: form.phone,
+          company: form.company,
+          service: form.service,
+          message: form.message,
+          to_email: 'webmaster@imbahub.co.zw',
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      )
+      setSubmitted(true)
+      setForm({ firstName: '', lastName: '', email: '', phone: '', company: '', service: '', message: '' })
+      setTimeout(() => setSubmitted(false), 6000)
+    } catch {
+      setError(true)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -132,14 +166,18 @@ export default function Contact() {
                     Thank you for your message. We will get back to you soon!
                   </div>
                 )}
+                {error && (
+                  <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm">
+                    Something went wrong. Please try again or email us directly.
+                  </div>
+                )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-slate-300 mb-2">First Name *</label>
                       <input
-                        type="text"
-                        required
+                        type="text" name="firstName" required value={form.firstName} onChange={handleChange}
                         className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg focus:outline-none focus:border-primary text-white placeholder-slate-600 transition-colors"
                         placeholder="John"
                       />
@@ -147,8 +185,7 @@ export default function Contact() {
                     <div>
                       <label className="block text-sm font-medium text-slate-300 mb-2">Last Name *</label>
                       <input
-                        type="text"
-                        required
+                        type="text" name="lastName" required value={form.lastName} onChange={handleChange}
                         className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg focus:outline-none focus:border-primary text-white placeholder-slate-600 transition-colors"
                         placeholder="Doe"
                       />
@@ -159,8 +196,7 @@ export default function Contact() {
                     <div>
                       <label className="block text-sm font-medium text-slate-300 mb-2">Email Address *</label>
                       <input
-                        type="email"
-                        required
+                        type="email" name="email" required value={form.email} onChange={handleChange}
                         className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg focus:outline-none focus:border-primary text-white placeholder-slate-600 transition-colors"
                         placeholder="john@company.com"
                       />
@@ -168,7 +204,7 @@ export default function Contact() {
                     <div>
                       <label className="block text-sm font-medium text-slate-300 mb-2">Phone Number</label>
                       <input
-                        type="tel"
+                        type="tel" name="phone" value={form.phone} onChange={handleChange}
                         className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg focus:outline-none focus:border-primary text-white placeholder-slate-600 transition-colors"
                         placeholder="+44 1234 567890"
                       />
@@ -179,7 +215,7 @@ export default function Contact() {
                     <div>
                       <label className="block text-sm font-medium text-slate-300 mb-2">Company Name</label>
                       <input
-                        type="text"
+                        type="text" name="company" value={form.company} onChange={handleChange}
                         className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg focus:outline-none focus:border-primary text-white placeholder-slate-600 transition-colors"
                         placeholder="Your Company Ltd"
                       />
@@ -187,7 +223,7 @@ export default function Contact() {
                     <div>
                       <label className="block text-sm font-medium text-slate-300 mb-2">Service Interest *</label>
                       <select
-                        required
+                        name="service" required value={form.service} onChange={handleChange}
                         className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg focus:outline-none focus:border-primary text-white transition-colors"
                       >
                         <option value="">Select a service...</option>
@@ -203,8 +239,7 @@ export default function Contact() {
                   <div>
                     <label className="block text-sm font-medium text-slate-300 mb-2">Project Details *</label>
                     <textarea
-                      rows={5}
-                      required
+                      name="message" rows={5} required value={form.message} onChange={handleChange}
                       className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg focus:outline-none focus:border-primary text-white placeholder-slate-600 transition-colors"
                       placeholder="Please describe your project requirements, timeline, and any specific challenges you're facing..."
                     />
@@ -226,10 +261,10 @@ export default function Contact() {
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-primary hover:bg-sky-600 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-primary/25"
+                    disabled={sending}
+                    className="w-full py-4 bg-primary hover:bg-sky-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-primary/25"
                   >
-                    Send Message 
-                    {/* <Send className="w-5 h-5" /> */}
+                    {sending ? 'Sending...' : 'Send Message'}
                   </button>
                 </form>
               </div>

@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 import {
   Users,
   ChevronDown,
-  Check,
-  ChevronRight,
+  Circle,
   ArrowRight,
   UploadCloud,
   User,
   Star,
   Search,
 } from 'lucide-react'
+import emailjs from '@emailjs/browser'
 
 type Category = 'all' | 'engineering' | 'graduate' | 'support'
 
@@ -141,6 +141,9 @@ export default function Careers() {
   const [openJob, setOpenJob] = useState<string | null>(null)
   const [selectedPosition, setSelectedPosition] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', coverLetter: '' })
   const applyRef = useRef<HTMLElement>(null)
 
   const visibleJobs = jobs.filter(
@@ -152,10 +155,37 @@ export default function Careers() {
     applyRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 5000)
+    setSending(true)
+    setError(false)
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_CAREERS_TEMPLATE_ID,
+        {
+          from_name: `${form.firstName} ${form.lastName}`,
+          from_email: form.email,
+          phone: form.phone,
+          position: selectedPosition,
+          cover_letter: form.coverLetter,
+          to_email: 'webmaster@imbahub.co.zw',
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      )
+      setSubmitted(true)
+      setForm({ firstName: '', lastName: '', email: '', phone: '', coverLetter: '' })
+      setSelectedPosition('')
+      setTimeout(() => setSubmitted(false), 6000)
+    } catch {
+      setError(true)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -336,7 +366,7 @@ export default function Careers() {
                           <ul className="space-y-2 text-sm text-slate-400">
                             {job.requirements.map(({ text, color }) => (
                               <li key={text} className="flex items-start gap-2">
-                                <Check className={`w-4 h-4 ${color} mt-0.5 flex-shrink-0`} />
+                                <Circle className={`w-4 h-4 ${color} mt-0.5 flex-shrink-0`} />
                                 {text}
                               </li>
                             ))}
@@ -349,7 +379,7 @@ export default function Careers() {
                           <ul className="space-y-2 text-sm text-slate-400">
                             {job.responsibilities.map(({ text, color }) => (
                               <li key={text} className="flex items-start gap-2">
-                                <ChevronRight className={`w-4 h-4 ${color} mt-0.5 flex-shrink-0`} />
+                                <Circle className={`w-4 h-4 ${color} mt-0.5 flex-shrink-0`} />
                                 {text}
                               </li>
                             ))}
@@ -358,7 +388,8 @@ export default function Careers() {
                             onClick={() => handleApplyNow(job.title)}
                             className={`inline-flex items-center gap-2 mt-6 px-6 py-3 ${job.applyBtnClass} text-white font-semibold rounded-lg transition-all`}
                           >
-                            Apply Now <ArrowRight className="w-4 h-4" />
+                            Apply Now 
+                            {/* <ArrowRight className="w-4 h-4" /> */}
                           </button>
                         </div>
                       </div>
@@ -396,27 +427,32 @@ export default function Careers() {
                 Thank you for your application! We will review your details and contact you soon.
               </div>
             )}
+            {error && (
+              <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm text-center">
+                Something went wrong. Please try again or email us directly.
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-slate-300 mb-2">First Name *</label>
-                  <input type="text" required placeholder="John" className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg focus:outline-none focus:border-primary text-white placeholder-slate-600 transition-colors" />
+                  <input type="text" name="firstName" required value={form.firstName} onChange={handleChange} placeholder="John" className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg focus:outline-none focus:border-primary text-white placeholder-slate-600 transition-colors" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-slate-300 mb-2">Last Name *</label>
-                  <input type="text" required placeholder="Doe" className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg focus:outline-none focus:border-primary text-white placeholder-slate-600 transition-colors" />
+                  <input type="text" name="lastName" required value={form.lastName} onChange={handleChange} placeholder="Doe" className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg focus:outline-none focus:border-primary text-white placeholder-slate-600 transition-colors" />
                 </div>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-slate-300 mb-2">Email *</label>
-                  <input type="email" required placeholder="john@example.com" className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg focus:outline-none focus:border-primary text-white placeholder-slate-600 transition-colors" />
+                  <input type="email" name="email" required value={form.email} onChange={handleChange} placeholder="john@example.com" className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg focus:outline-none focus:border-primary text-white placeholder-slate-600 transition-colors" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-slate-300 mb-2">Phone *</label>
-                  <input type="tel" required placeholder="+44 1234 567890" className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg focus:outline-none focus:border-primary text-white placeholder-slate-600 transition-colors" />
+                  <input type="tel" name="phone" required value={form.phone} onChange={handleChange} placeholder="+44 1234 567890" className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg focus:outline-none focus:border-primary text-white placeholder-slate-600 transition-colors" />
                 </div>
               </div>
 
@@ -439,7 +475,7 @@ export default function Careers() {
 
               <div>
                 <label className="block text-sm font-medium text-slate-300 mb-2">Cover Letter / Message *</label>
-                <textarea rows={4} required placeholder="Tell us why you're interested in this role and what you can bring to the team..." className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg focus:outline-none focus:border-primary text-white placeholder-slate-600 transition-colors" />
+                <textarea name="coverLetter" rows={4} required value={form.coverLetter} onChange={handleChange} placeholder="Tell us why you're interested in this role and what you can bring to the team..." className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg focus:outline-none focus:border-primary text-white placeholder-slate-600 transition-colors" />
               </div>
 
               <div>
@@ -459,9 +495,8 @@ export default function Careers() {
                 </label>
               </div>
 
-              <button type="submit" className="w-full py-4 bg-primary hover:bg-sky-600 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-primary/25">
-                Submit Application 
-                {/* <Send className="w-5 h-5" /> */}
+              <button type="submit" disabled={sending} className="w-full py-4 bg-primary hover:bg-sky-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-primary/25">
+                {sending ? 'Submitting...' : 'Submit Application'}
               </button>
             </form>
           </div>

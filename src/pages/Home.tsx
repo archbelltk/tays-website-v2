@@ -27,7 +27,7 @@ export default function Home() {
           <img
             src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920&q=80"
             alt="Industrial Automation Background"
-            className="w-full h-full object-cover opacity-85"
+            className="w-full h-full object-cover opacity-95"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-slate-950/50" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/80" />
@@ -44,7 +44,7 @@ export default function Home() {
                 <span className="text-sm font-medium">Engineering Excellence Since 2010</span>
               </div> */}
 
-              <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-6xl mb-6 leading-tight">
+              <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-6xl mb-6 mt-[50px] sm:mt-4 leading-tight">
                 <span className="inline text-white">Bespoke </span>
                 <span className="gradient-text">Automation</span>
                 <span className="block text-white">Solutions</span>
@@ -59,13 +59,12 @@ export default function Home() {
               </p> */}
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link
-                  to="/services"
+                <a
+                  href="#services"
                   className="px-8 py-4 bg-primary hover:bg-sky-600 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg shadow-primary/25"
                 >
                   Explore Services
-                  {/* <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" /> */}
-                </Link>
+                </a>
                 <Link
                   to="/contact"
                   className="px-8 py-4 border border-slate-600 hover:border-primary bg-slate-900/50 backdrop-blur-sm text-slate-300 hover:text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
@@ -76,7 +75,7 @@ export default function Home() {
               </div>
 
               {/* Stats Row */}
-              <div className="mt-16 grid grid-cols-3 gap-8 border-t border-slate-800/50 pt-8">
+              <div className="mt-5 grid grid-cols-3 gap-8 border-t border-slate-800/50 pt-8">
                 <div className="text-center lg:text-left">
                   <div className="text-3xl font-bold text-white mb-1">10+</div>
                   <div className="text-sm text-slate-500">Years Experience</div>
@@ -300,7 +299,7 @@ From pharmaceutical advancements that enhance lives to cutting-edge
             <p className="text-lg text-slate-400 mb-8">
               Harnessing the Power of Rockwell Automation, Siemens, Mitsubishi, and Schneider Electric
             </p>
-            <div className="flex flex-wrap justify-center mt-8 gap-10 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+            <div className="flex flex-wrap justify-center mt-[40px] gap-10 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
               {[
                 { brand: 'Rockwell', src: rockwellLogo },
                 { brand: 'Siemens', src: siemensLogo },
@@ -317,7 +316,7 @@ From pharmaceutical advancements that enhance lives to cutting-edge
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12 mt-[60px]">
+          <div className="grid md:grid-cols-2 gap-8 mb-12 mt-[80px]">
             <div className="group relative overflow-hidden rounded-2xl bg-slate-950 border border-slate-800 card-hover">
               <div className="h-64 bg-gradient-to-br from-slate-800 to-slate-900 relative overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">

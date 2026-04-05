@@ -9,6 +9,7 @@ import {
   Star,
   Search,
 } from 'lucide-react'
+import PrivacyPolicyModal from '../components/PrivacyPolicyModal'
 
 type Category = 'all' | 'engineering' | 'graduate' | 'support'
 
@@ -141,6 +142,8 @@ export default function Careers() {
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState(false)
   const [sending, setSending] = useState(false)
+  const [privacyAccepted, setPrivacyAccepted] = useState(false)
+  const [showPrivacyModal, setShowPrivacyModal] = useState(false)
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', coverLetter: '' })
   const [cvFile, setCvFile] = useState<File | null>(null)
   const applyRef = useRef<HTMLElement>(null)
@@ -495,10 +498,19 @@ export default function Careers() {
               </div>
 
               <div className="flex items-start gap-3">
-                <input type="checkbox" id="privacy-careers" required className="mt-1 w-4 h-4 rounded border-slate-700 bg-slate-950 text-primary focus:ring-primary focus:ring-offset-slate-900" />
+                <input
+                  type="checkbox"
+                  id="privacy-careers"
+                  required
+                  checked={privacyAccepted}
+                  onChange={(e) => setPrivacyAccepted(e.target.checked)}
+                  className="mt-1 w-4 h-4 rounded border-slate-700 bg-slate-950 text-primary focus:ring-primary focus:ring-offset-slate-900"
+                />
                 <label htmlFor="privacy-careers" className="text-sm text-slate-400">
                   I consent to TAYS Automation processing my personal data for recruitment purposes in accordance with the{' '}
-                  <a href="/privacy-policy" className="text-primary hover:underline">GDPR Privacy Policy</a>. *
+                  <button type="button" onClick={() => setShowPrivacyModal(true)} className="text-primary hover:underline">
+                    GDPR Privacy Policy
+                  </button>. *
                 </label>
               </div>
 
@@ -559,6 +571,13 @@ export default function Careers() {
           </Link>
         </div>
       </section>
+
+      {showPrivacyModal && (
+        <PrivacyPolicyModal
+          onAccept={() => { setPrivacyAccepted(true); setShowPrivacyModal(false) }}
+          onClose={() => setShowPrivacyModal(false)}
+        />
+      )}
     </>
   )
 }

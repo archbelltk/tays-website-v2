@@ -40,7 +40,6 @@ export default function Footer() {
               <li><Link to="/projects" className="hover:text-primary transition-colors">Projects</Link></li>
               <li><Link to="/careers" className="hover:text-primary transition-colors">Careers</Link></li>
               <li><Link to="/contact" className="hover:text-primary transition-colors">Get in touch</Link></li>
-              <li><Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
             </ul>
           </div>
 
@@ -81,7 +80,10 @@ export default function Footer() {
 
         <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-600 text-sm">© 2026 Tays Engineering Ltd. All rights reserved.</p>
-          <div className="flex gap-4">
+          <div className="flex items-center gap-4">
+            <Link to="/privacy-policy" className="text-slate-500 hover:text-primary text-sm transition-colors">
+              Privacy Policy
+            </Link>
             <a
               href="https://www.linkedin.com/in/tays-engineering-consultancy-ta-tays-solar-tays-automation-16182b13a/"
               aria-label="LinkedIn"

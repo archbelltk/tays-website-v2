@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import { Mail, Phone, HelpCircle, MapPin } from 'lucide-react'
 import { SiWhatsapp } from '@icons-pack/react-simple-icons'
+import PrivacyPolicyModal from '../components/PrivacyPolicyModal'
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState(false)
   const [sending, setSending] = useState(false)
+  const [privacyAccepted, setPrivacyAccepted] = useState(false)
+  const [showPrivacyModal, setShowPrivacyModal] = useState(false)
   const [form, setForm] = useState({
     firstName: '', lastName: '', email: '', phone: '',
     company: '', service: '', message: '',
@@ -234,11 +237,17 @@ export default function Contact() {
                       type="checkbox"
                       id="privacy"
                       required
+                      checked={privacyAccepted}
+                      onChange={(e) => setPrivacyAccepted(e.target.checked)}
                       className="mt-1 w-4 h-4 rounded border-slate-700 bg-slate-950 text-primary focus:ring-primary focus:ring-offset-slate-900"
                     />
                     <label htmlFor="privacy" className="text-sm text-slate-400">
                       I agree to the{' '}
-                      <a href="/privacy-policy" className="text-primary hover:underline">Privacy Policy</a>{' '}
+                      <button
+                        type="button"
+                        onClick={() => setShowPrivacyModal(true)}
+                        className="text-primary hover:underline"
+                      >Privacy Policy</button>{' '}
                       and consent to having my data processed for the purpose of this enquiry.
                     </label>
                   </div>
@@ -323,6 +332,13 @@ export default function Contact() {
           </div>
         </div>
       </section>
+
+      {showPrivacyModal && (
+        <PrivacyPolicyModal
+          onAccept={() => { setPrivacyAccepted(true); setShowPrivacyModal(false) }}
+          onClose={() => setShowPrivacyModal(false)}
+        />
+      )}
     </>
   )
 }

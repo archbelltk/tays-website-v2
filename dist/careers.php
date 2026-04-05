@@ -28,7 +28,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-$to      = 'archbell1maunganidze@gmail.com';
+$to      = 'tinashe@taysautomation.com';
 $subject = "New Job Application – $position – $firstName $lastName";
 
 $boundary = md5(uniqid(time()));

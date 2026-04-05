@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Mail, Phone, MapPin } from 'lucide-react'
-import { SiWhatsapp, SiX } from '@icons-pack/react-simple-icons'
+import { SiWhatsapp} from '@icons-pack/react-simple-icons'
 import taysLogo from '../img/tays-logo.png' 
 
 // LinkedIn removed from Simple Icons due to trademark — using inline SVG

@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { Mail, Phone, HelpCircle, MapPin } from 'lucide-react'
-import { SiWhatsapp, SiX, SiYoutube } from '@icons-pack/react-simple-icons'
+import { SiWhatsapp} from '@icons-pack/react-simple-icons'
 import emailjs from '@emailjs/browser'
 
-const LinkedInIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect width="4" height="12" x="2" y="9" />
-    <circle cx="4" cy="4" r="2" />
-  </svg>
-)
+// const LinkedInIcon = () => (
+//   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+//     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+//     <rect width="4" height="12" x="2" y="9" />
+//     <circle cx="4" cy="4" r="2" />
+//   </svg>
+// )
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)

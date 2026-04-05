@@ -44,7 +44,7 @@ export default function Home() {
                 <span className="text-sm font-medium">Engineering Excellence Since 2010</span>
               </div> */}
 
-              <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-6xl mb-6 mt-[20px] sm:mt-4 leading-tight">
+              <h1 className="font-display font-bold text-5xl md:text-6xl mb-6 mt-[20px] sm:mt-4 leading-[1.15] md:leading-tight">
                 <span className="inline text-white">Bespoke </span>
                 <span className="gradient-text">Automation</span>
                 <span className="block text-white">Solutions</span>
@@ -155,7 +155,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+        <div className="hidden lg:block absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
           <a href="#services"><ChevronDown className="w-6 h-6 text-slate-400" /></a>
         </div>
       </section>

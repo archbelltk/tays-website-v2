@@ -32,7 +32,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-$to      = 'tinashe@taysautomation.com';
+$to      = 'archbell1maunganidze@gmail.com';
 $subject = "New Enquiry from $firstName $lastName – $service";
 
 $body  = "You have received a new enquiry via the TAYS Automation website.\n\n";

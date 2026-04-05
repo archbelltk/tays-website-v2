@@ -282,7 +282,7 @@ From pharmaceutical advancements that enhance lives to cutting-edge
               <img
                 src={industriesImg}
                 alt="Industries we support"
-                className="relative w-full h-[500px] object-cover rounded-3xl shadow-2xl opacity-40"
+                className="relative w-full h-80 md:h-[500px] object-cover rounded-3xl shadow-2xl opacity-40"
               />
             </div>
           </div>

@@ -9,7 +9,6 @@ import {
   Star,
   Search,
 } from 'lucide-react'
-import emailjs from '@emailjs/browser'
 
 type Category = 'all' | 'engineering' | 'graduate' | 'support'
 
@@ -143,6 +142,7 @@ export default function Careers() {
   const [error, setError] = useState(false)
   const [sending, setSending] = useState(false)
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', coverLetter: '' })
+  const [cvFile, setCvFile] = useState<File | null>(null)
   const applyRef = useRef<HTMLElement>(null)
 
   const visibleJobs = jobs.filter(
@@ -163,21 +163,21 @@ export default function Careers() {
     setSending(true)
     setError(false)
     try {
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_CAREERS_TEMPLATE_ID,
-        {
-          from_name: `${form.firstName} ${form.lastName}`,
-          from_email: form.email,
-          phone: form.phone,
-          position: selectedPosition,
-          cover_letter: form.coverLetter,
-          to_email: 'webmaster@imbahub.co.zw',
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-      )
+      const fd = new FormData()
+      fd.append('firstName', form.firstName)
+      fd.append('lastName', form.lastName)
+      fd.append('email', form.email)
+      fd.append('phone', form.phone)
+      fd.append('position', selectedPosition)
+      fd.append('coverLetter', form.coverLetter)
+      if (cvFile) fd.append('cv', cvFile)
+
+      const res = await fetch('/careers.php', { method: 'POST', body: fd })
+      const data = await res.json()
+      if (!res.ok || !data.success) throw new Error(data.message)
       setSubmitted(true)
       setForm({ firstName: '', lastName: '', email: '', phone: '', coverLetter: '' })
+      setCvFile(null)
       setSelectedPosition('')
       setTimeout(() => setSubmitted(false), 6000)
     } catch {
@@ -481,16 +481,24 @@ export default function Careers() {
                 <label className="block text-sm font-medium text-slate-300 mb-2">Upload CV *</label>
                 <label className="block border-2 border-dashed border-slate-800 rounded-lg p-6 text-center hover:border-primary/50 transition-colors cursor-pointer">
                   <UploadCloud className="w-10 h-10 text-slate-500 mx-auto mb-3" />
-                  <p className="text-slate-400 text-sm mb-2">Drag and drop your CV here, or click to browse</p>
+                  <p className="text-slate-400 text-sm mb-2">
+                    {cvFile ? cvFile.name : 'Drag and drop your CV here, or click to browse'}
+                  </p>
                   <p className="text-slate-600 text-xs">PDF, DOC, DOCX up to 5MB</p>
-                  <input type="file" accept=".pdf,.doc,.docx" className="hidden" />
+                  <input
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    className="hidden"
+                    onChange={(e) => setCvFile(e.target.files?.[0] ?? null)}
+                  />
                 </label>
               </div>
 
               <div className="flex items-start gap-3">
                 <input type="checkbox" id="privacy-careers" required className="mt-1 w-4 h-4 rounded border-slate-700 bg-slate-950 text-primary focus:ring-primary focus:ring-offset-slate-900" />
                 <label htmlFor="privacy-careers" className="text-sm text-slate-400">
-                  I consent to TAYS Automation processing my personal data for recruitment purposes in accordance with the GDPR policy. *
+                  I consent to TAYS Automation processing my personal data for recruitment purposes in accordance with the{' '}
+                  <a href="/privacy-policy" className="text-primary hover:underline">GDPR Privacy Policy</a>. *
                 </label>
               </div>
 

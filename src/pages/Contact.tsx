@@ -1,15 +1,6 @@
 import { useState } from 'react'
 import { Mail, Phone, HelpCircle, MapPin } from 'lucide-react'
-import { SiWhatsapp} from '@icons-pack/react-simple-icons'
-import emailjs from '@emailjs/browser'
-
-// const LinkedInIcon = () => (
-//   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-//     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-//     <rect width="4" height="12" x="2" y="9" />
-//     <circle cx="4" cy="4" r="2" />
-//   </svg>
-// )
+import { SiWhatsapp } from '@icons-pack/react-simple-icons'
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
@@ -29,20 +20,13 @@ export default function Contact() {
     setSending(true)
     setError(false)
     try {
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID,
-        {
-          from_name: `${form.firstName} ${form.lastName}`,
-          from_email: form.email,
-          phone: form.phone,
-          company: form.company,
-          service: form.service,
-          message: form.message,
-          to_email: 'webmaster@imbahub.co.zw',
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-      )
+      const res = await fetch('/contact.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      const data = await res.json()
+      if (!res.ok || !data.success) throw new Error(data.message)
       setSubmitted(true)
       setForm({ firstName: '', lastName: '', email: '', phone: '', company: '', service: '', message: '' })
       setTimeout(() => setSubmitted(false), 6000)
@@ -254,7 +238,7 @@ export default function Contact() {
                     />
                     <label htmlFor="privacy" className="text-sm text-slate-400">
                       I agree to the{' '}
-                      <a href="#" className="text-primary hover:underline">Privacy Policy</a>{' '}
+                      <a href="/privacy-policy" className="text-primary hover:underline">Privacy Policy</a>{' '}
                       and consent to having my data processed for the purpose of this enquiry.
                     </label>
                   </div>

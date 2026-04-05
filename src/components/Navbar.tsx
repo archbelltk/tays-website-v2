@@ -119,7 +119,10 @@ export default function Navbar() {
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  onKeyDown={(e) => e.key === 'Escape' && setSearchOpen(false)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Escape') { setSearchOpen(false); setQuery('') }
+                    if (e.key === 'Enter' && results.length > 0) handleSelect(results[0].to)
+                  }}
                   placeholder="Search..."
                   className="w-56 pl-9 pr-4 py-2 bg-slate-900 border border-slate-700 focus:border-primary rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none transition-colors"
                 />
@@ -176,6 +179,9 @@ export default function Navbar() {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && results.length > 0) handleSelect(results[0].to)
+                }}
                 placeholder="Search..."
                 className="w-full pl-9 pr-4 py-2 bg-slate-950 border border-slate-800 focus:border-primary rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none transition-colors"
               />

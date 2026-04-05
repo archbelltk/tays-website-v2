@@ -5,6 +5,7 @@ import Services from './pages/Services'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
 import Careers from './pages/Careers'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -132,7 +132,7 @@ export default function Projects() {
                 </div>
 
                 <div className="flex items-center gap-4 text-sm text-slate-500 mb-6">
-                  <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> Completed: 2024</span>
+                  <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> Completed: 2025</span>
                   <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> Location: UK</span>
                   <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> Duration: 6 months</span>
                 </div>
@@ -287,7 +287,7 @@ export default function Projects() {
                 </div>
 
                 <div className="flex items-center gap-4 text-sm text-slate-500 mb-6">
-                  <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> Completed: 2023</span>
+                  <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> Completed: 2024</span>
                   <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> Location: UK</span>
                   <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> Duration: 12 months</span>
                 </div>

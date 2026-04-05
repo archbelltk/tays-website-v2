@@ -541,13 +541,14 @@ export default function Careers() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="font-display text-4xl font-bold mb-6 text-white">Don't See the Right Role?</h2>
           <p className="text-lg text-slate-400 mb-8">
-            Send us your CV anyway — we're always interested in talented engineers and we'll keep you in mind for future opportunities.
+            Send us your CV anyway, we're always interested in talented engineers<br/> and we'll keep you in mind for future opportunities.
           </p>
           <Link
             to="/contact"
             className="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-sky-600 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg shadow-primary/25"
           >
-            Get in Touch <ArrowRight className="w-5 h-5" />
+            Get in Touch 
+            {/* <ArrowRight className="w-5 h-5" /> */}
           </Link>
         </div>
       </section>

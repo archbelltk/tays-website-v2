@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Mail, Phone, HelpCircle } from 'lucide-react'
+import { Mail, Phone, HelpCircle, MapPin } from 'lucide-react'
 import { SiWhatsapp, SiX, SiYoutube } from '@icons-pack/react-simple-icons'
 import emailjs from '@emailjs/browser'
 
@@ -88,15 +88,15 @@ export default function Contact() {
 
               <div className="space-y-6">
                 {[
-                  // {
-                  //   icon: <MapPin className="w-6 h-6 text-primary" />,
-                  //   title: 'Location',
-                  //   lines: ['United Kingdom', 'Headquarters'],
-                  // },
+                  {
+                    icon: <MapPin className="w-6 h-6 text-primary" />,
+                    title: 'Location',
+                    lines: ['1 Downview Way, Arundel, BN18 0HN'],
+                  },
                   {
                     icon: <Mail className="w-6 h-6 text-primary" />,
                     title: 'Email',
-                    lines: ['admin@taysautomation.com'],
+                    lines: ['tinashe@taysautomation.com'],
                   },
                   // {
                   //   icon: <Clock className="w-6 h-6 text-primary" />,
@@ -111,7 +111,7 @@ export default function Contact() {
 
                      {
                     icon: <SiWhatsapp className="w-6 h-6 text-primary" />,
-                    title: 'Phone',
+                    title: 'WhatsApp',
                     lines: ['+44 7594 057017'],
                   }
                 ].map(({ icon, title, lines }) => (
@@ -132,7 +132,7 @@ export default function Contact() {
               </div>
 
               {/* Social Links */}
-              <div className="pt-6 border-t border-slate-800">
+              {/* <div className="pt-6 border-t border-slate-800">
                 <h4 className="font-semibold text-white mb-4">Follow Us</h4>
                 <div className="flex gap-3">
                   {[
@@ -142,7 +142,7 @@ export default function Contact() {
                   ].map(({ icon, label }) => (
                     <a
                       key={label}
-                      href="#"
+                      href="https://www.linkedin.com/in/tays-engineering-consultancy-ta-tays-solar-tays-automation-16182b13a/"
                       aria-label={label}
                       className="w-12 h-12 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all"
                     >
@@ -150,7 +150,7 @@ export default function Contact() {
                     </a>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Contact Form */}

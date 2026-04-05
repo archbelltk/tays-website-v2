@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Mail, Phone } from 'lucide-react'
+import { Mail, Phone, MapPin } from 'lucide-react'
 import { SiWhatsapp, SiX } from '@icons-pack/react-simple-icons'
 import taysLogo from '../img/tays-logo.png' 
 
@@ -56,14 +56,14 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-white mb-4">Contact</h4>
             <ul className="space-y-3 text-sm text-slate-400">
-              {/* <li className="flex items-start gap-2">
+              <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <span>United Kingdom</span>
-              </li> */}
+                <span>1 Downview Way, Arundel, BN18 0HN</span>
+              </li>
               <li className="flex items-start gap-2">
                 <Mail className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <a href="mailto:info@taysautomation.com" className="hover:text-primary transition-colors">
-                  admin@taysautomation.com
+                <a href="mailto:tinashe@taysautomation.com" className="hover:text-primary transition-colors">
+                  tinashe@taysautomation.com
                 </a>
               </li>
               <li className="flex items-start gap-2">
@@ -82,19 +82,19 @@ export default function Footer() {
           <p className="text-slate-600 text-sm">© 2026 Tays Engineering Ltd. All rights reserved.</p>
           <div className="flex gap-4">
             <a
-              href="#"
+              href="https://www.linkedin.com/in/tays-engineering-consultancy-ta-tays-solar-tays-automation-16182b13a/"
               aria-label="LinkedIn"
               className="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all"
             >
               <LinkedInIcon />
             </a>
-            <a
+            {/* <a
               href="#"
               aria-label="X (Twitter)"
               className="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all"
             >
               <SiX className="w-5 h-5" />
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

@@ -349,7 +349,7 @@ export default function Careers() {
                     </div>
                     <button
                       onClick={() => setOpenJob(isOpen ? null : job.id)}
-                      className="px-6 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-sm font-medium transition-all flex items-center gap-2"
+                      className="w-fit px-6 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-sm font-medium transition-all flex items-center gap-2"
                     >
                       View Details
                       <ChevronDown
